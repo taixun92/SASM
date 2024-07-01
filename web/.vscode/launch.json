@@ -1,0 +1,26 @@
+{
+    // IntelliSense를 사용하여 가능한 특성에 대해 알아보세요.
+    // 기존 특성에 대한 설명을 보려면 가리킵니다.
+    // 자세한 내용을 보려면 https://go.microsoft.com/fwlink/?linkid=830387을(를) 방문하세요.
+    "version"        : "0.2.0",
+    "configurations" : [
+        {
+            "name"                   : "Launch Chrome",
+            "type"                   : "chrome",
+            "request"                : "launch",
+            "url"                    : "https://10.10.50.114:4433",
+            "webRoot"                : "${workspaceFolder}",
+            "sourceMaps"             : true,
+            "sourceMapPathOverrides" : {
+                "webpack://./*"           : "${webRoot}/*",
+                "webpack://./js/*"        : "${webRoot}/js/*",
+                "webpack://./html/*"      : "${webRoot}/html/*",
+                "webpack://./template/*"  : "${webRoot}/template/*",
+                "webpack://./static/js/*" : "${webRoot}/static/js/*"
+            },
+            "showAsyncStacks"        : true,
+            "smartStep"              : true,
+            "perScriptSourcemaps"    : "no"
+        },
+    ]
+}

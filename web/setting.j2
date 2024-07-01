@@ -1,0 +1,29 @@
+{% extends "base/layout.j2" %}
+
+{% block
+    STYLES %}
+
+  <style>
+    {% include "pages/setting/style.css" %}
+  </style>
+
+{% endblock
+%}
+
+{% block
+    CONTENT %}
+  
+  {% include "pages/setting/layout.j2" %}
+
+{% endblock
+%}
+
+{% block
+    SCRIPTS %}
+
+  <script type="text/javascript">
+    {% include "pages/setting/script.js" %}
+  </script>
+
+{% endblock
+%}
