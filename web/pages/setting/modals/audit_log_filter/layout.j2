@@ -1,0 +1,67 @@
+<div class="modal fade draggable" id="audit-log-filter-modal" tabindex="-1" role="dialog">
+    
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+
+        <div class="modal-content">
+            
+            <div class="modal-header">
+                <h6 class="modal-title">{{ textData.AUDIT_LOG_MANAGE_FILTER }}</h6>
+            </div>
+
+            <div class="modal-body">
+                
+                <div class="d-flex align-items-center">
+                    <img src="static/img/dot.svg" class="dot-image">
+                    <div class="col-form-label">{{ textData.AUDIT_LOG_MANAGE_LOG_TIME }}</div>
+                    <input id="audit-log-filter-modal-date-start" type="text" class="form-control w-30 bg-white date-picker audit-log-filter">
+                    <div class="mx-1 px-0">~</div>
+                    <input id="audit-log-filter-modal-date-end" type="text" class="form-control w-30 bg-white date-picker audit-log-filter">
+                </div>
+
+                <div class="d-flex align-items-center mt8">
+                    <img src="static/img/dot.svg" class="dot-image">
+                    <div class="col-form-label" for="audit-log-filter-modal-select-user">{{ textData.USER }}</div>
+                    <select id="audit-log-filter-modal-select-user" class="form-control w-66 minw170 audit-log-filter">
+                        <option>{{ textData.ALL }}</option>
+                        {% for user in logUserList %}
+                            <option>{{ user if user != 'ANONYMOUS' else textData.NONEXISTENT_ID }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="d-flex align-items-center mt8">
+                    <img src="static/img/dot.svg" class="dot-image">
+                    <div class="col-form-label" for="audit-log-filter-modal-select-category">
+                        {{ textData.CATEGORY }}
+                    </div>
+                    <select id="audit-log-filter-modal-select-category" class="form-control w-66 minw170 audit-log-filter">
+                        <option>{{ textData.ALL }}</option>
+                        {% for c in logCategoryList %}
+                            <option>{{ c }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="d-flex align-items-center mt8">
+                    <img src="static/img/dot.svg" class="dot-image">
+                    <div class="col-form-label" for="audit-log-filter-modal-select-type">{{ textData.TYPES }}</div>
+                    <select id="audit-log-filter-modal-select-type" class="form-control w-66 minw170 audit-log-filter">
+                        <option>{{ textData.ALL }}</option>
+                        {% for t in logTypeList %}
+                            <option>{{ t }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button id="audit-log-filter-modal-reset-button" type="button" class="btn mr-2 no-refresh">{{ textData.RESET }}</button>
+                <button type="button" class="btn" data-dismiss="modal">{{ textData.MODAL_CLOSE }}</button>
+            </div>
+    
+        </div>
+
+    </div>
+    
+</div>

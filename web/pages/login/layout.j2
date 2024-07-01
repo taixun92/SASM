@@ -1,0 +1,43 @@
+{% include "pages/login/modals/layout.j2" %}
+
+<div class="login-box">
+    
+    <div class="login-logo">
+        <a href="#"><b>{{ textData.TITLE }}</b></a>
+    </div>
+    
+    <div class="card">
+        <div class="card-body login-card-body">
+            <p class="login-box-msg text-danger"></p>
+
+            <div class="input-group mb-3">
+                
+                <input id="login-input-id" type="text" class="form-control" placeholder="{{ textData.USERNAME }}" autocomplete="off">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                    <span class="fas fa-user"></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="input-group mb-3">
+                
+                <input id="login-input-pw" class="form-control" type="password" placeholder="{{ textData.PASSWORD }}" autocomplete="off">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                    <span class="fas fa-lock"></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <button id="login-submit-button" class="btn btn-primary btn-block">{{ textData.BUTTON_LOGIN }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

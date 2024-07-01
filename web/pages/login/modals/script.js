@@ -1,0 +1,1 @@
+{% include "pages/login/modals/pw_change/script.js" %}
