@@ -70,7 +70,7 @@ class bcolors:
 #################################################################################################################################################################
 # 로그 종류별 메시지 포맷 클래스 (색깔 없음)
 #################################################################################################################################################################
-class ENGINELogFormatter(Formatter):
+class LogFormatter(Formatter):
     d_fmt = '[Debug] %(asctime)s.%(msecs)03d "%(pathname)s", line %(lineno)s, in %(funcName)s - %(msg)s'
     i_fmt = '[+] %(asctime)s.%(msecs)03d "%(pathname)s" - %(msg)s'
     w_fmt = '[!] %(asctime)s.%(msecs)03d "%(pathname)s", in %(funcName)s - %(msg)s'
@@ -83,11 +83,11 @@ class ENGINELogFormatter(Formatter):
     def format(self, record):
         fmt_origin = self._style._fmt
 
-        if   record.levelno == DEBUG   : self._style._fmt = ENGINELogFormatter.d_fmt
-        elif record.levelno == INFO    : self._style._fmt = ENGINELogFormatter.i_fmt
-        elif record.levelno == WARNING : self._style._fmt = ENGINELogFormatter.w_fmt
-        elif record.levelno == ERROR   : self._style._fmt = ENGINELogFormatter.f_fmt
-        elif record.levelno == CRITICAL: self._style._fmt = ENGINELogFormatter.e_fmt
+        if   record.levelno == DEBUG   : self._style._fmt = LogFormatter.d_fmt
+        elif record.levelno == INFO    : self._style._fmt = LogFormatter.i_fmt
+        elif record.levelno == WARNING : self._style._fmt = LogFormatter.w_fmt
+        elif record.levelno == ERROR   : self._style._fmt = LogFormatter.f_fmt
+        elif record.levelno == CRITICAL: self._style._fmt = LogFormatter.e_fmt
 
         result = Formatter.format(self, record)
         self._style._fmt = fmt_origin
@@ -97,26 +97,33 @@ class ENGINELogFormatter(Formatter):
 #################################################################################################################################################################
 # 로그 종류별 메시지 포맷 클래스 (색깔 있음)
 #################################################################################################################################################################
-class ENGINELogFormatter2(Formatter):
+class LogFormatter2(Formatter):
     d_fmt = bcolors.GREEN  + '[Debug]' + bcolors.END + ' %(asctime)s.%(msecs)03d "%(pathname)s", line %(lineno)s in %(funcName)s - ' + bcolors.GREEN  + '%(msg)s' + bcolors.END
     i_fmt = bcolors.WHITE  + '[+]'     + bcolors.END + ' %(asctime)s.%(msecs)03d "%(pathname)s" - '                                  + bcolors.WHITE  + '%(msg)s' + bcolors.END
     w_fmt = bcolors.YELLOW + '[!]'     + bcolors.END + ' %(asctime)s.%(msecs)03d "%(pathname)s" in %(funcName)s - '                  + bcolors.YELLOW + '%(msg)s' + bcolors.END
     f_fmt = bcolors.RED    + '[-]'     + bcolors.END + ' %(asctime)s.%(msecs)03d "%(pathname)s" in %(funcName)s - '                  + bcolors.RED    + '%(msg)s' + bcolors.END
     e_fmt = bcolors.RED    + '[E]'     + bcolors.END + ' %(asctime)s.%(msecs)03d "%(pathname)s", line %(lineno)s in %(funcName)s - ' + bcolors.RED    + '%(msg)s' + bcolors.END
 
-    def __init__(self, fmt='%(msg)s', datefmt="%Y-%m-%d %H:%M:%S"):
-        super().__init__(fmt=fmt, datefmt=datefmt)
+    def __init__(
+          self
+        , fmt     = '%(msg)s'
+        , datefmt = "%Y-%m-%d %H:%M:%S"
+    ):
+        super().__init__(
+              fmt     = fmt
+            , datefmt = datefmt
+        )
 
-    def format(self, record):
+    def format( self, record ):
         fmt_origin = self._style._fmt
 
-        if   record.levelno == DEBUG   : self._style._fmt = ENGINELogFormatter2.d_fmt
-        elif record.levelno == INFO    : self._style._fmt = ENGINELogFormatter2.i_fmt
-        elif record.levelno == WARNING : self._style._fmt = ENGINELogFormatter2.w_fmt
-        elif record.levelno == ERROR   : self._style._fmt = ENGINELogFormatter2.f_fmt
-        elif record.levelno == CRITICAL: self._style._fmt = ENGINELogFormatter2.e_fmt
+        if   record.levelno == DEBUG   : self._style._fmt = LogFormatter2.d_fmt
+        elif record.levelno == INFO    : self._style._fmt = LogFormatter2.i_fmt
+        elif record.levelno == WARNING : self._style._fmt = LogFormatter2.w_fmt
+        elif record.levelno == ERROR   : self._style._fmt = LogFormatter2.f_fmt
+        elif record.levelno == CRITICAL: self._style._fmt = LogFormatter2.e_fmt
 
-        result           = Formatter.format(self, record)
+        result           = Formatter.format( self, record )
         self._style._fmt = fmt_origin
 
         return result
@@ -124,7 +131,7 @@ class ENGINELogFormatter2(Formatter):
 #################################################################################################################################################################
 # 로그 클래스 (날짜별로 새로운 로그 파일을 생성하는 로그 로테이트 방식)
 #################################################################################################################################################################
-class EngineLogger():
+class Logger():
     def __init__(
           self
         , name 
@@ -185,14 +192,14 @@ class EngineLogger():
         ########################################################################################################################################
         self.streamHandler = StreamHandler( stdout )
 
-        self.formatter = ENGINELogFormatter()
+        self.formatter = LogFormatter()
         self.fileHandler.setFormatter( self.formatter )
         
         ########################################################################################################################################
         # 각 로그마다 색상이 다르게 출력된다.
         ########################################################################################################################################
         if self.colored:
-            self.formatter2 = ENGINELogFormatter2()
+            self.formatter2 = LogFormatter2()
             self.streamHandler.setFormatter( self.formatter2 )
         
         ########################################################################################################################################

@@ -14,7 +14,7 @@ from flask       import request
 from engine.core                         import g
 from engine.core.util.auditlog           import audit_log
 from engine.core.const.alias             import WEB_USER_ADMIN
-from engine.core.const.alias             import SUCCESS, INFO, WARNING, FAIL, ERROR, REJECTED, REDIRECT, DEBUG
+from engine.core.const.alias             import SUCCESS
 from engine.app.api.controller.decorator import observer, request_form_validator
 from engine.app.util                     import Response
 

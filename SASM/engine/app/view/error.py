@@ -10,7 +10,7 @@ from flask import render_template
 
 def error_view( title, modalTitle, modalBody ):
     return render_template(
-        'err.j2'
+        'err.html'
       , title      = title
       , modalTitle = modalTitle
       , modalBody  = modalBody

@@ -1,0 +1,96 @@
+{
+    "TCP": {
+        "active": {
+            "TerminalServerCookie": [
+                "ms-wbt-server"
+            ],
+            "SSLSessionReq": [
+                "ssl"
+            ],
+            "SMBProgNeg": [
+                "msrpc",
+                "netbios-ssn",
+                "microsoft-ds",
+                "postgresql"
+            ],
+            "GetRequest": [
+                "http",
+                "oracle-mts",
+                "ws-discovery",
+                "ipp",
+                "soap"
+            ],
+            "HTTPOptions": [
+                "http"
+            ],
+            "TLSSessionReq": [
+                "ssl"
+            ],
+            "Help": [
+                "http"
+            ],
+            "Socks5": [
+                "socks5"
+            ],
+            "DNSVersionBindReqTCP": [
+                "mc-nmf"
+            ],
+            "ms-sql-s": [
+                "ms-sql-s"
+            ],
+            "Kerberos": [
+                "postgresql"
+            ],
+            "RTSPRequest": [
+                "upnp"
+            ],
+            "GenericLines": [
+                "websocket",
+                "http"
+            ],
+            "TerminalServer": [
+                "ms-wbt-server"
+            ],
+            "RPCCheck": [
+                "rpcbind"
+            ],
+            "TLS-PSK": [
+                "ssl/steam"
+            ],
+            "proconos": [
+                "echo"
+            ],
+            "ajp": [
+                "ajp13"
+            ],
+            "SIPOptions": [
+                "http"
+            ]
+        },
+        "passive": [
+            "ssh",
+            "nagios-nsca",
+            "mysql"
+        ]
+    },
+    "UDP": {
+        "active": {
+            "NBTStat": [
+                "netbios-ns"
+            ],
+            "DNS-SD": [
+                "mdns"
+            ],
+            "DNSVersionBindReq": [
+                "domain"
+            ],
+            "RPCCheck": [
+                "rpcbind"
+            ],
+            "SNMPv1public": [
+                "snmp"
+            ]
+        },
+        "passive": []
+    }
+}

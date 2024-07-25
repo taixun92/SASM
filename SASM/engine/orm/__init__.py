@@ -18,7 +18,7 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 from engine.core                import g
 from engine.core.util.shell     import popen
 from engine.core.util.exception import traceback_message
-from engine.core.const.platform import WIN32
+from engine.core.const.platform import WIN32, DIR_SEP
 from engine.core.const.alias    import AUDIT_LOG_CATEGORY
 from engine.core.const.alias    import SUCCESS, INFO, FAIL
 from engine.orm.model.public    import Base, AuditLogCategory
@@ -118,7 +118,7 @@ class DBEngine():
 
         popen(
               cmd = '{createdb} -p {db_port} -O {db_user} -h {db_host} -U {db_user} -E UTF-8 -T template0 {db_name}'.format(
-                    createdb = path_join( environ[ 'SASM_HOME' ], 'embedded/pgsql/bin/createdb' )
+                    createdb = path_join( environ[ 'SASM_HOME' ], f'embedded{ DIR_SEP }pgsql{ DIR_SEP }bin{ DIR_SEP }createdb' )
                   , db_port  = g.options[ 'engine_db_port' ]
                   , db_user  = g.options[ 'engine_db_user' ]
                   , db_host  = g.options[ 'engine_db_host' ]
@@ -131,7 +131,7 @@ class DBEngine():
         )    
         popen( 
               cmd = '{psql} -p {db_port} -U {db_user} -c "{sql}"'.format(
-                    psql    = path_join( environ[ 'SASM_HOME' ], 'embedded/pgsql/bin/psql' ) 
+                    psql    = path_join( environ[ 'SASM_HOME' ], f'embedded{ DIR_SEP }pgsql{ DIR_SEP }bin{ DIR_SEP }psql' ) 
                   , db_port = g.options[ 'engine_db_port' ]
                   , db_user = g.options[ 'engine_db_user' ]
                   , sql     = "ALTER system SET password_encryption ='scram-sha-256'"
@@ -143,7 +143,7 @@ class DBEngine():
         )
         popen( 
               cmd = '{psql} -p {db_port} -U {db_user} -c "{sql}"'.format(
-                  psql    = path_join( environ[ 'SASM_HOME' ], 'embedded/pgsql/bin/psql' ) 
+                  psql    = path_join( environ[ 'SASM_HOME' ], f'embedded{ DIR_SEP }pgsql{ DIR_SEP }bin{ DIR_SEP }psql' ) 
                 , db_port = g.options[ 'engine_db_port' ]
                 , db_user = g.options[ 'engine_db_user' ]
                 , sql     = "SELECT pg_reload_conf()"
@@ -155,7 +155,7 @@ class DBEngine():
         )
         popen( 
               cmd = '{psql} -p {db_port} -U {db_user} -c "{sql}"'.format(
-                  psql    = path_join( environ[ 'SASM_HOME' ], 'embedded/pgsql/bin/psql' ) 
+                  psql    = path_join( environ[ 'SASM_HOME' ], f'embedded{ DIR_SEP }pgsql{ DIR_SEP }bin{ DIR_SEP }psql' ) 
                 , db_port = g.options[ 'engine_db_port' ]
                 , db_user = g.options[ 'engine_db_user' ]
                 , sql     = f"ALTER user { g.options[ 'engine_db_user' ] } WITH password '{ g.options[ 'engine_db_pass' ] }'"
@@ -294,7 +294,7 @@ class DBEngine():
 
             popen(
                   cmd = '{pg_ctl} -o "-p {db_port}" -D "{db_data}" start'.format(
-                      pg_ctl   = path_join( environ[ 'SASM_HOME' ], 'embedded/pgsql/bin/pg_ctl' ) 
+                      pg_ctl   = path_join( environ[ 'SASM_HOME' ], f'embedded{ DIR_SEP }pgsql{ DIR_SEP }bin{ DIR_SEP }pg_ctl' ) 
                     , db_port  = g.options[ 'engine_db_port' ]
                     , db_data  = g.options[ 'engine_db_data' ]
                   )
@@ -326,7 +326,7 @@ class DBEngine():
 
             if popen(
                   cmd = '{pg_ctl} -o "-p {db_port}" -D "{db_data}" stop'.format(
-                      pg_ctl  = path_join( environ[ 'SASM_HOME' ], 'embedded/pgsql/bin/pg_ctl' ) 
+                      pg_ctl  = path_join( environ[ 'SASM_HOME' ], f'embedded{ DIR_SEP }pgsql{ DIR_SEP }bin{ DIR_SEP }pg_ctl' ) 
                     , db_port = g.options[ 'engine_db_port' ]
                     , db_data = g.options[ 'engine_db_data' ]
                   )
@@ -366,7 +366,7 @@ class DBEngine():
 
             if popen(
                   cmd = '{pg_ctl} -o "-p {db_port}" -D "{db_data}" status'.format(
-                        pg_ctl  = path_join( environ[ 'SASM_HOME' ], 'embedded/pgsql/bin/pg_ctl' ) 
+                        pg_ctl  = path_join( environ[ 'SASM_HOME' ], f'embedded{ DIR_SEP }pgsql{ DIR_SEP }bin{ DIR_SEP }pg_ctl' ) 
                       , db_port = g.options[ 'engine_db_port' ]
                       , db_data = g.options[ 'engine_db_data' ]
                   )
@@ -465,7 +465,7 @@ class DBEngine():
 
         if popen(
               cmd = '{initdb} --auth-host=trust --auth-local=trust -E UTF8 --no-locale -U {db_user} "{db_data}"'.format(
-                  initdb  = path_join( environ[ 'SASM_HOME' ], 'embedded/pgsql/bin/initdb' ) 
+                  initdb  = path_join( environ[ 'SASM_HOME' ], f'embedded{ DIR_SEP }pgsql{ DIR_SEP }bin{ DIR_SEP }initdb' ) 
                 , db_user = g.options[ 'engine_db_user' ]
                 , db_data = g.options[ 'engine_db_data' ]
               )

@@ -9,14 +9,18 @@
 from argparse import ArgumentParser, RawTextHelpFormatter
 
 # Engine Libraries
-from engine import run
-from engine import ENGINE, VERSION, DEV
+from engine import main
+from engine import ENGINE, VERSION, DEV, ASCII_ART
 
 ######################################################################################################
 # 실행 인자값 파싱
 ######################################################################################################
 def parseOptions():
-    parser = ArgumentParser( add_help=False, formatter_class=RawTextHelpFormatter, description='SASM Engine V1.0' )
+    parser = ArgumentParser(
+          add_help        = False
+        , formatter_class = RawTextHelpFormatter
+        , description     = f"{ ASCII_ART }\n{ ENGINE } V{ VERSION }"
+    )
 
     general_group = parser.add_argument_group( 'General options' )
     general_group.add_argument( '-h'  , '--help'   , help="Show this help message and exit."          , action='help'                                          )
@@ -27,4 +31,4 @@ def parseOptions():
     return parser.parse_args()
 
 if __name__=='__main__':
-    run( args=parseOptions() )
+    main( args=parseOptions() )

@@ -1,0 +1,15 @@
+{% include "pages/login/modals/layout.html" %}
+
+<div class="login-box">
+    <h3>{{ textData.LOGIN }}</h3>
+
+    <p class="login-box-msg text-danger"></p>
+
+    <label for="login-input-id">{{ textData.ID }}</label>
+    <input id="login-input-id" type="text" placeholder="{{ textData.USERNAME }}">
+
+    <label for="login-input-pw">{{ textData.PW }}</label>
+    <input id="login-input-pw" type="password" placeholder="{{ textData.PASSWORD }}">
+
+    <button id="login-submit-button">{{ textData.BUTTON_LOGIN }}</button>
+</div>

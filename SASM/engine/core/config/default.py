@@ -6,9 +6,57 @@
 # ====================== Comments ======================
 # 
 
-from os      import environ
-from os.path import join as path_join
-from ssl     import PROTOCOL_TLS
+from textwrap import dedent
+from os       import getcwd  as os_getcwd
+from os.path  import join    as path_join
+from os.path  import dirname as path_dirname
+from sys      import argv    as sys_argv
+from ssl      import PROTOCOL_TLS
+
+ASCII_ART = dedent( """
+                                                *
+                                               **             *   *        
+                                               *                 *         
+                                         * *   *              *            
+                                           **  **              **          
+                                               **              *        *  
+                                                 **           *    *  **   
+                                                   ***      ***   * ***    
+                                                       ************        
+                                                             ****          
+                                                         **********        
+                                                          ***********      
+                                                           ******* *****   
+                                                           ****************
+                                                          ***** ***********
+                                                         *****  *****      
+        ****                          ****             ******  ****        
+     *********         ***          ********     ****  ****** *****        
+     **               *****        **            ***** ***** *****         
+     ***             ***  **       ***           ****** ***  *****         
+      *******        **   ***       *******      **  **  *  **  **         
+           ****     **     **            ****    ***  **   **   **         
+             **    ***********             ***   ****  ** ***   **         
+     **     ***   ***       ***    **      **    ***** *****    **         
+     ********     **         ***    ********  *  *****  ***     **         
+                                            ***  ******                    
+            **                        *******************                  
+             *******************************************                   
+              *************************    **************                  
+             ***************                ****   ********                
+         ***********  ******                ****       ******              
+        *********     *****                 ***           ***              
+        ****         *****                  ***           ***              
+       ***           *****                  ***          **                
+      ***             ****                  **          **                 
+     ***                ***                 **         **                  
+     **                   **                *        ***                   
+    **                     ***             **      ***                     
+   ***                       **            **                              
+  ***                         **           **                              
+ **                             **         **                              
+                                 *          **
+""" )
 
 # Info
 ENGINE                      = 'SASM'
@@ -18,7 +66,8 @@ VERSION                     = '1.0.0'
 DEV                         = False
 
 # System
-HOME_PATH                   = environ[ 'SASM_HOME' ]
+HOME_PATH                   = os_getcwd() if '-dev' in sys_argv else path_dirname( path_join( os_getcwd(), sys_argv[ 0 ] ) )
+
 DEBUG                       = False
 DEBUG_KEY                   = 'DxMME1pGEA6RfcJxzy05VlldsYcruUtZNkPG77JMl9onRfGCSCtsU5FZb9sR0N2Q'
 

@@ -10,6 +10,6 @@ from flask import render_template
 
 def login_view():
     return render_template(
-        'login.j2'
+        'login.html'
       , title = 'Login'
     )

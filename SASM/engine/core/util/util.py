@@ -7,22 +7,11 @@
 #  
 
 # Python Libraries
-from re        import IGNORECASE  
-from re        import sub    as re_sub
-from re        import search as re_search
-from itertools import chain
 from base64    import b64encode
 from functools import reduce
 
 # ENGINE Libraries
 from engine.core.const.platform import ESCAPE_CHAR
-
-# 특수문자 이스케이프 처리를 위한 함수 (윈도우는 ^     리눅스는 \)
-def escape_string(s):
-    n = ''
-    for c in s:
-        n += ESCAPE_CHAR + c
-    return n
 
 # '1-5' 문자열을 [1, 2, 3, 4, 5] 리스트로 반환하는 함수
 def parse_range_item(r):
@@ -32,74 +21,6 @@ def parse_range_item(r):
     if len(parts) > 2:
         raise ValueError( 'Invalid range: {}'.format(r) )
     return range(int(parts[0]), int(parts[-1]) + 1)
-
-# '015001,015005-015007' -> ['015001', '015005', '015006', '015007'] 변환 함수
-def parseRangedItem(items):
-    item_list = set( chain.from_iterable( map(parse_range_item, items.split(',') ) ) )
-    item_list = [f'{item:06}' for item in item_list]
-    return sorted(item_list)
-
-# '01,05-07' -> ['01', '05', '06', '07'] 변환 함수
-def parseRangedVulgroup(vulgroups):
-    vulgroup_list = set( chain.from_iterable( map(parse_range_item, vulgroups.split(',') ) ) )
-    vulgroup_list = [f'{vulgroup:02}' for vulgroup in vulgroup_list]
-    return sorted(vulgroup_list)
-
-# ['015001', '015005', '015006', '015007'] -> '015001,015005-015007' 변환 함수
-def compress_item_list_to_str(item_list):
-    sorted_item_list = sorted(item_list)
-    compress_item_str = ''
-
-    while len(sorted_item_list):
-        item = sorted_item_list.pop(0)
-        if isinstance(item, int):
-            item_str = str(item)
-        else:
-            item_str = item
-
-        pattern = r'(\d+\-|)(\d+)$'
-        match = re_search(pattern, compress_item_str, IGNORECASE)
-        if match:
-            if ( int(item_str) - int( match.group(2) ) ) == 1:
-                compress_item_str = re_sub(pattern, '', compress_item_str)
-                if len( match.group(1) ):
-                    compress_item_str += '{}{}'.format(match.group(1), item_str)
-                else:
-                    compress_item_str += '{}-{}'.format(match.group(2), item_str)
-            else:
-                compress_item_str += ',{}'.format(item_str)
-        else:
-            compress_item_str += item_str
-
-    return compress_item_str
-
-# ['01', '05', '06', '07'] -> '01,05-07' 변환 함수
-def compress_vulgroup_list_to_str(vulgroup_list):
-    sorted_vulgroup_list = sorted(vulgroup_list)
-    compress_vulgroup_str = ''
-
-    while len(sorted_vulgroup_list):
-        vulgroup = sorted_vulgroup_list.pop(0)
-        if isinstance(vulgroup, int):
-            vulgroup_str = str(vulgroup)
-        else:
-            vulgroup_str = vulgroup
-
-        pattern = r'(\d+\-|)(\d+)$'
-        match = re_search(pattern, compress_vulgroup_str, IGNORECASE)
-        if match:
-            if ( int(vulgroup_str) - int( match.group(2) ) ) == 1:
-                compress_vulgroup_str = re_sub(pattern, '', compress_vulgroup_str)
-                if len( match.group(1) ):
-                    compress_vulgroup_str += '{}{}'.format(match.group(1), vulgroup_str)
-                else:
-                    compress_vulgroup_str += '{}-{}'.format(match.group(2), vulgroup_str)
-            else:
-                compress_vulgroup_str += ',{}'.format(vulgroup_str)
-        else:
-            compress_vulgroup_str += vulgroup_str
-
-    return compress_vulgroup_str
 
 # 초 단위를 시, 분 초로 변환하는 함수 (1234 -> '20m 34s')
 def get_str_time_from_sec(sec, sec_round=0):
@@ -146,8 +67,8 @@ def b64encode_all(d):
     return d
 
 def merge( 
-      obj1: dict or list
-    , obj2: dict or list
+      obj1: dict | list
+    , obj2: dict | list
 ):
     if  isinstance( obj1, dict )\
     and isinstance( obj2, dict ):

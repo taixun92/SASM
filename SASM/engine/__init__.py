@@ -6,5 +6,5 @@
 # ====================== Comments ======================
 #
 
-from engine.core                import run
-from engine.core.config.default import ENGINE, VERSION, DEV
+from engine.core                import main
+from engine.core.config.default import ENGINE, VERSION, DEV, ASCII_ART

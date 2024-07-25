@@ -10,7 +10,7 @@ from flask import render_template
 
 def install_view( installInfo, installInfoDefault ):
     return render_template(
-        'install.j2'
+        'install.html'
       , title              = 'Install'
       , installInfo        = installInfo
       , installInfoDefault = installInfoDefault

@@ -7,7 +7,6 @@
 #
   
 # Python Libraries
-from os             import getcwd   as os_getcwd
 from os             import environ  as os_environ
 from os             import makedirs as os_makedirs
 from os             import walk     as os_walk
@@ -17,8 +16,6 @@ from os.path        import isdir    as path_isdir
 from os.path        import isfile   as path_isfile
 from os.path        import exists   as path_exists
 from os.path        import getmtime as path_getmtime
-from os.path        import dirname  as path_dirname
-from sys            import argv     as sys_argv
 from sys            import path     as sys_path
 from sys            import exit     as sys_exit
 from socket         import socket
@@ -34,15 +31,15 @@ from datetime       import datetime, timedelta
 # Engine Libraries
 from engine.core                import g
 from engine.core.const.alias    import ERROR
-from engine.core.const.platform import WIN32, ENV_SEP, DIR_SEP
-from engine.core.config.default import ENGINE, VERSION
+from engine.core.const.platform import WIN32, DIR_SEP, ENV_SEP
+from engine.core.config.default import ENGINE, VERSION, HOME_PATH
 from engine.core.util.process   import EngineProcessManager, check_running
 from engine.core.util.config    import write_config, load_config
 from engine.core.util.util      import make_pretty
 from engine.core.util.db        import is_installed
 from engine.core.util.browser   import open_browser
 from engine.core.util.exception import traceback_message
-from engine.core.util.log       import EngineLogger
+from engine.core.util.log       import Logger
 from engine.app                 import create_app
 from engine.orm                 import DBEngine
 from engine.orm.model.public    import AuditLog
@@ -51,36 +48,32 @@ from engine.core.util.tls       import load_cert
 if WIN32:
     from engine.core.util.win32 import messagebox, EngineSplashImage
 
-def run( args ):
+def main( args ):
     g.options[ 'debug' ] = True if args.debug else False
     g.options[ 'dev'   ] = True if args.dev   else False
     
     # Environment
-    ROOT_DIR = os_getcwd()      \
-        if   '-dev' in sys_argv \
-        else path_dirname( path_join( os_getcwd(), sys_argv[ 0 ] ) )
-
-    ENGINE_BIN_DIR = "{ROOT_DIR}{sep}bin".format(
-          ROOT_DIR = ROOT_DIR
+    ENGINE_BIN_DIR = "{HOME_PATH}{sep}bin".format(
+          HOME_PATH = HOME_PATH
         , sep      = DIR_SEP
     )
 
-    PGSQL_BIN_DIR = "{ROOT_DIR}{sep}embedded{sep}pgsql{sep}bin".format(
-          ROOT_DIR = ROOT_DIR
-        , sep      = DIR_SEP
+    PGSQL_BIN_DIR = "{HOME_PATH}{sep}embedded{sep}pgsql{sep}bin".format(
+          HOME_PATH = HOME_PATH
+        , sep       = DIR_SEP
     )
 
-    os_environ[ 'SASM_HOME' ] = ROOT_DIR
-    os_environ[ 'PATH'      ] = "{ROOT_DIR}{sep}{ENGINE_BIN_DIR}{sep}{PGSQL_BIN_DIR}{sep}{PATH}".format(
-          ROOT_DIR       = ROOT_DIR
+    os_environ[ 'SASM_HOME' ] = HOME_PATH
+    os_environ[ 'PATH'      ] = "{HOME_PATH}{sep}{ENGINE_BIN_DIR}{sep}{PGSQL_BIN_DIR}{sep}{PATH}".format(
+          HOME_PATH      = HOME_PATH
         , ENGINE_BIN_DIR = ENGINE_BIN_DIR
         , PGSQL_BIN_DIR  = PGSQL_BIN_DIR
         , PATH           = os_environ[ 'PATH' ]
         , sep            = ENV_SEP
     )
 
-    if not ROOT_DIR in sys_path: 
-        sys_path.append( ROOT_DIR )
+    if not HOME_PATH in sys_path: 
+        sys_path.append( HOME_PATH )
 
     ########################################################################################################################################################################################################################
     # Prevent duplicate execution
@@ -104,7 +97,7 @@ def run( args ):
     ########################################################################################################################################################################################################################
     # Logger
     ########################################################################################################################################################################################################################
-    g.logger = EngineLogger(
+    g.logger = Logger(
           name       = ENGINE
         , log_path   = g.options[ 'log_path' ]
         , encoding   = g.options[ 'encoding' ]
@@ -113,7 +106,7 @@ def run( args ):
     )
 
     g.logger.info( f'START [Version { VERSION }]' )
-    g.logger.info( f'Starting at <{ ROOT_DIR }>'  )
+    g.logger.info( f'Starting at <{ HOME_PATH }>'  )
 
     try:
         ############################################################################################################################################################################
@@ -139,7 +132,7 @@ def run( args ):
 
                 g.procManager.create(
                       name        = ( alias := 'firewall_rule_append' )
-                    , cmd         = f'''netsh advfirewall firewall add rule name="SASM" dir=in action=allow protocol=tcp localport={ g.options[ 'web_port' ] } remoteport=any profile=any program="{ ROOT_DIR }\\SASM.exe" enable=yes'''
+                    , cmd         = f'''netsh advfirewall firewall add rule name="SASM" dir=in action=allow protocol=tcp localport={ g.options[ 'web_port' ] } remoteport=any profile=any program="{ HOME_PATH }\\SASM.exe" enable=yes'''
                     , live_output = False
                 )
                 g.procManager.wait( alias )
@@ -194,25 +187,25 @@ def run( args ):
             # Delete old log files
             ###################################################################################################################################################
             for path, dirs, files in os_walk( g.options[ 'log_path' ] ):
-                for filename in files:                                          # 로그 파일 저장 디렉토리 탐색 
+                for filename in files:
                     file = path_join( path, filename )
                     
-                    if filename.endswith( '.log' ):                             # 파일의 확장자가 .log인지 확인 
-                        time_diff = time() - path_getmtime( file )           # 파일의 [현재시간 - 마지막 수정된 날짜] 계산
+                    if filename.endswith( '.log' ):
+                        time_diff = time() - path_getmtime( file )
 
-                        if time_diff > 86400 * g.options[ 'log_backup_count' ]: # 파일의 마지막 수정된 날짜가 3년전이라면 파일을 삭제
+                        if time_diff > 86400 * g.options[ 'log_backup_count' ]:
                             os_remove( file )
 
             ###################################################################################################################################################
             # Config
             ###################################################################################################################################################
-            if not path_isdir( g.options[ 'config_path' ] ):                                # Config 디렉토리 존재 여부 체크
+            if not path_isdir( g.options[ 'config_path' ] ):
                 os_makedirs( g.options[ 'config_path' ] )
 
-            if not path_isfile( g.options[ 'config_file' ] ):                               # config 파일 존재여부 체크
+            if not path_isfile( g.options[ 'config_file' ] ):
                 g.logger.info( 'Creating config.' )
 
-                if not path_isfile( g.options[ 'config_default_file' ] ):                   # 존재하지 않는다면 생성
+                if not path_isfile( g.options[ 'config_default_file' ] ):
                     write_config( 
                           config_file = g.options[ 'config_default_file' ]
                         , options     = g.options

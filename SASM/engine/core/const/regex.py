@@ -29,7 +29,7 @@ REGEX_DATEPICKER           = r'2\d{3}\-(0[1-9]|1[0-2])\-(0[1-9]|[1-2]\d|3[0-1])'
 REGEX_LICENSE_KEY_V1       = '^1;(.+);({0});(\d+);({1})'.format(REGEX_DATE, MAC) # 버전;이름;유효기간;최대등록수;맥주소
 REGEX_LICENSE_KEY_V2       = '^2'
 
-REGEX_INTERPROCESS_MESSAGE = r'^([A-Z_]+?)(|;(.+))$'                             # 메시지이름;데이터
+REGEX_INTERPROCESS_MESSAGE = r'^\[92\;7m(.*)\[0m\ \[92m(.*)\[0m'
 
 REGEX_ID                   = r'^[\ a-z0-9\!\@\(\)\_\-\=\+\,\.\?\~]+$'
 REGEX_NANE                 = r'^[ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z\ ]+$'

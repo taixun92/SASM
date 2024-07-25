@@ -38,10 +38,9 @@ def parse_interprocess_message( out ):
     #########################################################################################
     # [메시지이름];[메시지 데이터] 형태로 되어있는 메시지를 구분자(;)기준으로 분리 
     #########################################################################################
-    match = re.search( REGEX_INTERPROCESS_MESSAGE, out )
-    if match:
+    if match := re.search( REGEX_INTERPROCESS_MESSAGE, out ):
         msg[ 'name' ] = match.group( 1 )
-        msg[ 'data' ] = match.group( 3 )
+        msg[ 'data' ] = match.group( 2 )
 
     return msg
 
@@ -182,7 +181,7 @@ class ENGINEProcess():
 
                 text = '{name} - {stdout}'.format(
                       name   = self.module_name
-                    , stdout = line.replace( '\r', '\\r' ).replace( '\n', '\\n' )
+                    , stdout = line.replace( '\r', '' )
                 )
 
                 self.logger.debug( text )
