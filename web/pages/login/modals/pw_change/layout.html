@@ -1,0 +1,41 @@
+<div class="modal fade draggable" id="pw-change-modal" tabindex="-1" role="dialog">
+
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        
+        <div class="modal-content">
+    
+            <div class="modal-header">
+                <h6 class="modal-title" id="pw-change-modal-title">{{ textData.MODAL_LOGIN_PASSWORD_CHANGE }}</h6>
+            </div>
+
+            <div id="pw-change-modal-body" class="modal-body">
+
+                <div class="d-flex align-items-center">
+                    <img src="static/img/dot.svg" alt="" class="dot-image">
+                    <label for="pw-change-modal-input-pw" class="col-form-label d-flex align-items-center">{{ textData.NEW_PASSWORD }}</label>
+                    <input  id="pw-change-modal-input-pw" class="form-control" type="password">
+                </div>
+                <div id="pw-change-modal-empty-pw" class="d-none validation-control text-danger">{{ textData.VALIDATION_INCOMPLETE_FORM_PW }}</div>
+
+                <div class="d-flex align-items-center mt8">
+                    <img src="static/img/dot.svg" alt="" class="dot-image">
+                    <label for="pw-change-modal-input-re-pw" class="col-form-label d-flex align-items-center">{{ textData.PASSWORD_RE }}</label>
+                    <input  id="pw-change-modal-input-re-pw" class="form-control" type="password">
+                </div>
+                <div id="pw-change-modal-empty-re-pw" class="d-none validation-control text-danger">{{ textData.VALIDATION_INCOMPLETE_FORM_PW_NO_MATCH }}</div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button id="pw-change-modal-submit-button" type="button" class="btn mr-2">
+                    <span id="pw-change-modal-submit-button-span" role="status" aria-hidden="true"></span>
+                    <div  id="pw-change-modal-submit-button-text">{{ textData.CHANGE }}</div>
+                </button>
+                <button type="button" class="btn" data-dismiss="modal">{{ textData.MODAL_CLOSE }}</button>
+            </div>
+
+        </div>
+    
+    </div>
+    
+</div>

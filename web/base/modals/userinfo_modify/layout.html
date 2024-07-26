@@ -1,0 +1,77 @@
+<div class="modal fade draggable" id="user-info-modify-modal" tabindex="-1" role="dialog">
+    
+    <div class="modal-dialog modal-dialog-centered" role="document">
+
+        <div class="modal-content">
+            
+            <div class="modal-header">
+                <h6 class="modal-title" id="user-info-modify-modal-title">{{ textData.WEB_USER_USER_INFO }}</h6>
+            </div>
+
+            <div id="user-info-modify-modal-body" class="modal-body">
+                
+                <div class="d-flex align-items-center">
+                    <img src="static/img/dot.svg" class="dot-image">
+                    <label for="user-info-modify-modal-input-id" class="col-form-label d-flex align-items-center">
+                        {{ textData.ID }}
+                    </label>
+                    <input type="text" class="form-control" id="user-info-modify-modal-input-id" disabled>
+                </div>
+
+                <div class="d-flex align-items-center mt8">
+                    <img src="static/img/dot.svg" class="dot-image">
+                    <label for="user-info-modify-modal-input-pw" class="col-form-label d-flex align-items-center">
+                        {{ textData.PASSWORD }}
+                    </label>
+                    <input type="password" class="form-control" id="user-info-modify-modal-input-pw">
+                </div>
+
+                <div class="d-flex align-items-center mt8">
+                    <img src="static/img/dot.svg" class="dot-image">
+                    <label for="user-info-modify-modal-input-re-pw" class="col-form-label d-flex align-items-center">{{ textData.PASSWORD_RE }}</label>
+                    <input type="password" class="form-control" id="user-info-modify-modal-input-re-pw">
+                </div>
+
+                <div id="user-info-modify-modal-empty-re-pw" class="d-none validation-control text-danger">
+                    {{ textData.VALIDATION_INCOMPLETE_FORM_PW_NO_MATCH }}
+                </div>
+
+                <div class="d-flex align-items-center mt8">
+                    <img src="static/img/dot.svg" class="dot-image">
+                    <label for="user-info-modify-modal-input-name" class="col-form-label d-flex align-items-center">
+                        {{ textData.NAME }}
+                    </label>
+                    <input type="text" class="form-control" id="user-info-modify-modal-input-name">
+                </div>
+
+                <div class="d-flex align-items-center mt8">
+                    <img src="static/img/dot.svg" class="dot-image">
+                    <label for="user-info-modify-modal-input-department" class="col-form-label d-flex align-items-center">
+                        {{ textData.DEPARTMENT }}
+                    </label>
+                    <input type="text" class="form-control" id="user-info-modify-modal-input-department">
+                </div>
+
+                <div class="d-flex align-items-center mt8">
+                    <img src="static/img/dot.svg" class="dot-image">
+                    <label for="user-info-modify-modal-input-email" class="col-form-label d-flex align-items-center">
+                        {{ textData.EMAIL }}
+                    </label>
+                    <input type="text" class="form-control" id="user-info-modify-modal-input-email">
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button id="user-info-modify-modal-submit-button" class="btn d-flex justify-content-center align-items-center mr-2 no-refresh">
+                    <span id="user-info-modify-modal-submit-button-span" role="status" aria-hidden="true"></span>
+                    <div  id="user-info-modify-modal-submit-button-text">{{ textData.MODIFY }}</div>
+                </button>
+                <button type="button" class="btn" data-dismiss="modal">{{ textData.MODAL_CLOSE }}</button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

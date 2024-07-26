@@ -1,0 +1,95 @@
+<div class="modal fade draggable" id="web-user-info-modal" tabindex="-1" role="dialog">
+    
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        
+        <div class="modal-content">
+        
+            <div class="modal-header">
+                <h6 id="web-user-info-modal-title" class="modal-title">{{ textData.WEB_USER_MANAGE_NEW }}</h6>
+            </div>
+
+            <div class="modal-body" id="web-user-info-modal-body">
+                
+                <div class="d-flex align-items-center">
+                    <img src="static/img/dot.svg" class="dot-image">
+                    <label for="web-user-info-modal-input-id" class="col-form-label d-flex align-items-center">{{ textData.USERNAME }}</label>
+                    <input  id="web-user-info-modal-input-id" class="form-control" type="text">
+                </div>                
+                <div id="web-user-info-modal-empty-id" class="d-none validation-control text-danger">{{ textData.VALIDATION_INCOMPLETE_FORM_ID }}</div>
+
+                <div class="d-flex align-items-center mt8">
+                    <img src="static/img/dot.svg" class="dot-image">
+                    <label for="web-user-info-modal-input-pw" class="col-form-label d-flex align-items-center">{{ textData.PASSWORD }}</label>
+                    <input  id="web-user-info-modal-input-pw" class="form-control" type="password">
+                </div>
+                <div id="web-user-info-modal-empty-pw" class="d-none validation-control text-danger">{{ textData.VALIDATION_INCOMPLETE_FORM_PW }}</div>
+                    
+                <div class="d-flex align-items-center mt8">
+                    <img src="static/img/dot.svg" class="dot-image">
+                    <label for="web-user-info-modal-input-re-pw" class="col-form-label d-flex align-items-center">{{ textData.PASSWORD_RE }}</label>
+                    <input  id="web-user-info-modal-input-re-pw" class="form-control" type="password">
+                </div>
+                <div id="web-user-info-modal-empty-re-pw" class="d-none validation-control text-danger">{{ textData.VALIDATION_INCOMPLETE_FORM_PW_NO_MATCH }}</div>
+
+                <div class="d-flex align-items-center mt8">
+                    <img src="static/img/dot.svg" class="dot-image">
+                    <label for="web-user-info-modal-select-priv-level" class="col-form-label d-flex align-items-center">{{ textData.PRIV_LEVEL }}</label>
+                    <select id="web-user-info-modal-select-priv-level" class="form-control">
+                        {% for level, alias in privList.items() %}
+                        <option value={{ level }}>{{ alias }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="d-flex align-items-center mt8">
+                    <img src="static/img/dot.svg" class="dot-image">
+                    <label for="web-user-info-modal-input-name" class="col-form-label d-flex align-items-center">{{ textData.NAME }}</label>
+                    <input  id="web-user-info-modal-input-name" class="form-control" type="text">
+                </div>
+                <div id="web-user-info-modal-empty-name" class="d-none validation-control text-danger">{{ textData.VALIDATION_INCOMPLETE_FORM_NAME }}</div>
+
+                <div class="d-flex align-items-center mt8">
+                    <img src="static/img/dot.svg" class="dot-image">
+                    <label for="web-user-info-modal-input-department" class="col-form-label d-flex align-items-center">{{ textData.DEPARTMENT }}</label>
+                    <input  id="web-user-info-modal-input-department" class="form-control" type="text">
+                </div>
+                <div id="web-user-info-modal-empty-department" class="d-none validation-control text-danger">{{ textData.VALIDATION_INCOMPLETE_FORM_DEPARTMENT }}</div>
+
+                <div class="d-flex align-items-center mt8">
+                    <img src="static/img/dot.svg" class="dot-image">
+                    <label for="web-user-info-modal-input-email" class="col-form-label d-flex align-items-center">{{ textData.EMAIL }}</label>
+                    <input  id="web-user-info-modal-input-email" class="form-control" type="text">
+                </div>
+                <div id="web-user-info-modal-empty-email" class="d-none validation-control text-danger">{{ textData.VALIDATION_INCOMPLETE_FORM_EMAIL }}</div>
+
+                <div class="d-flex align-items-center mt8">
+                    <img src="static/img/dot.svg" class="dot-image">
+                    <label for="web-user-info-modal-input-accessible-ip" class="col-form-label d-flex align-items-center">{{ textData.ACCESSIBLE_IP }}</label>
+                    <input  id="web-user-info-modal-input-accessible-ip" class="form-control" type="text">
+                </div>
+
+                <div class="d-flex align-items-center mt8">
+                    <img src="static/img/dot.svg" class="dot-image">
+                    <label for="web-user-info-modal-select-state-level" class="col-form-label d-flex align-items-center">{{ textData.STATE_LEVEL }}</label>
+                    <select id="web-user-info-modal-select-state-level" class="form-control">
+                        {% for level, alias in stateList.items() %}
+                        <option value={{ level }}>{{ alias }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button id="web-user-info-modal-submit-button" class="btn d-flex justify-content-center align-items-center mr-2 no-refresh">
+                    <span id="web-user-info-modal-submit-button-span" role="status" aria-hidden="true"></span>
+                    <div  id="web-user-info-modal-submit-button-text">{{ textData.MODIFY }}</div>
+                </button>
+                <button class="btn" type="button" data-dismiss="modal">{{ textData.MODAL_CLOSE }}</button>
+            </div>
+        
+        </div>
+
+    </div>
+
+</div>

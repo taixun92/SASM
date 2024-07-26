@@ -1,0 +1,33 @@
+<div class="modal fade draggable" id="password-authentication-modal" tabindex="-1" role="dialog">
+
+    <div class="modal-dialog modal-dialog-centered" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h6 class="modal-title">{{ textData.MODAL_PASSWORD_CHECK }}</h6>
+            </div>
+
+            <div id="password-authentication-modal-body" class="modal-body">
+                <div class="d-flex align-items-center">
+                    <img src="static/img/dot.svg" class="dot-image">
+                    <label for="password-authentication-modal-input-password" class="col-form-label d-flex align-items-center">
+                        {{ textData.PASSWORD }}
+                    </label>
+                    <input type="password" class="form-control" id="password-authentication-modal-input-password">
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button id="password-authentication-modal-submit-button" type="button" class="btn mr-2 no-refresh">
+                    <span id="password-authentication-modal-submit-button-span" role="status" aria-hidden="true"></span>
+                    <div  id="password-authentication-modal-submit-button-text">{{ textData.MODAL_CONFIRM }}</div>
+                </button>
+                <button type="button" class="btn" data-dismiss="modal">{{ textData.MODAL_CLOSE }}</button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

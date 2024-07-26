@@ -1,0 +1,42 @@
+<div id="web-user-manage" class="tab-pane show active" role="tabpanel" aria-labelledby="web-user-manage-tab">
+
+    <div class="description-card">
+        {{ textData.WEB_USER_MANAGE_DESCRIPTION_CARD }}
+    </div>
+
+    <div class="card mt-3">
+
+        <div class="card-body">
+    
+            <div class="d-flex mb10">
+    
+                <div class="w400 d-flex align-items-center">
+                    <img src="static/img/dot.svg" class="dot-image">
+                    <label class="col-form-label d-flex align-items-center">{{ textData.WEB_USER_MANAGE_NEW }}</label>
+                    <button class="btn w-30 d-flex justify-content-center align-items-center" id="web-user-manage-create-button" onclick="modalPasswordAuthentication(this)">
+                        {{ textData.CREATE }}
+                    </button>
+                </div>
+
+                <div class="w400 d-flex align-items-center">
+                    <img src="static/img/dot.svg" class="dot-image">
+                    <label class="col-form-label d-flex align-items-center">{{ textData.WEB_USER_MANAGE_SELECTED }}</label>
+                    <button class="btn w-30 d-flex justify-content-center align-items-center" id="web-user-manage-delete-button" onclick="webUserDelete(this)">
+                        <span id="web-user-manage-delete-button-span" role="status" aria-hidden="true"></span>
+                        <div  id="web-user-manage-delete-button-text">{{ textData.DELETE }}</div>
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="d-flex justify-content-start mt20">
+    
+                {% include "pages/setting/content/web_user_manage/web_user_table/layout.html" %}
+            
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

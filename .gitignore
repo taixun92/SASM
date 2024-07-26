@@ -1,9 +1,6 @@
 __pycache__/
-bin/network_scanner/PORT_SCAN*.json
+bin/*
 docs/
-bin/network_scanner_origin.tar
-bin/nmap_service_probe.py
-bin/probe.py
 .vscode
 data/pg/
 config/config.ini

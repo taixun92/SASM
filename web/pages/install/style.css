@@ -1,0 +1,74 @@
+.btn:focus {
+  box-shadow: none !important;
+}
+
+.form-control {
+  font-size: 0.8rem;
+}
+
+.form-column {
+  width: 100%;
+}
+.form-content {
+  width: 50%;
+}
+
+.form-content .col-form-label {
+  width        : 30%;
+  margin-right : 3%;
+  padding      : 0;
+}
+
+.form-content .btn {
+  height           : 34px;
+  font-size        : 0.8rem;
+  background-color : #f7f7f7;
+  border           : 1px solid #d1d1d1;
+  color            : #343434;
+  transition       : 0s;
+}
+.form-content .btn svg {
+  width        : 18px;
+  height       : 18px;
+  margin-right : 3px;
+}
+.form-content .btn:hover {
+  background-color : #6d90c1;
+  color            : #fff;
+  transition       : 0s;
+}
+.form-content .btn:hover svg path:not(.none) {
+  fill       : #fff;
+  transition : 0s;
+}
+.form-content .btn:disabled:hover {
+  background-color : #f7f7f7;
+  border           : 1px solid #d1d1d1;
+  color            : #343434;
+  cursor           : default;
+}
+.form-content .btn:disabled:hover svg path:not(.none) {
+  fill : #69737b;
+}
+
+.form-content .form-control {
+  height        : 34px;
+  width         : 98%;
+  font-size     : 0.8rem;
+  padding-right : 12px;
+  padding-left  : 12px;
+}
+.form-content .form-control:focus {
+  border     : 1px solid #68717b;
+  box-shadow : none;
+}
+.form-content .form-control:disabled {
+  border : 1px solid #b2b2b2;
+}
+.form-content .validation-control {
+  height       : auto;
+  width        : 100%;
+  font-size    : 0.8rem;
+  margin-left  : 16rem !important;
+  padding-left : 6px;
+}
