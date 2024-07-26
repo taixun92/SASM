@@ -84,7 +84,8 @@ except AttributeError: IS_ADMIN = windll.shell32.IsUserAnAdmin() != 0
 #######################################################################################
 # Encoding
 #######################################################################################
-ENCODING = 'utf-8'
+ENCODING            = 'utf-8'
+POTENTIAL_ENCODINGS = [ 'utf-8-sig', 'utf-16', 'cp949', 'euc-kr' ]
 
 #######################################################################################
 # Language
@@ -99,4 +100,35 @@ DEBUG_MODE = False
 #######################################################################################
 # Process
 #######################################################################################
-POPEN_TIMEOUT = 300 # seconds
+POPEN_TIMEOUT         = 300 # seconds
+
+SSH_ENCODING          = 'utf-8'
+SSH_CONN_TIMEOUT      = 1.0
+SSH_EXEC_TIMEOUT      = 1.0
+SSH_COMMAND_WAIT_TIME = 1.0
+SSH_BANNER_WAIT_TIME  = 1.0
+
+#######################################################################################
+# EXITCODE
+#######################################################################################
+SUCCESS  = 0
+INFO     = 1
+WARNING  = 2
+FAIL     = 3
+ERROR    = 4
+REJECTED = 5
+REDIRECT = 6
+ABORTED  = 7
+DEBUG    = 9
+
+EXITCODE = {
+      SUCCESS  : 'SUCCESS'
+    , INFO     : 'INFO'
+    , WARNING  : 'WARNING'
+    , FAIL     : 'FAIL'
+    , ERROR    : 'ERROR'
+    , REJECTED : 'REJECTED'
+    , REDIRECT : 'REDIRECT'
+    , ABORTED  : 'ABORTED'
+    , DEBUG    : 'DEBUG'
+}
