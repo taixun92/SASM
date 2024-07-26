@@ -1,4 +1,5 @@
-# SASM
+# SASM ( Security Attack Surface Management )
+![Banner Image](./resources/7.jpg)
 
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
 ![Coverage](https://img.shields.io/badge/coverage-95%25-brightgreen)
@@ -13,7 +14,7 @@
 - [Contact](#contact)
 
 ## Description
-A brief description of the project, its purpose, and its features.
+### "SASM: Security Attack Surface Management"</br> is automatically identifies assets that span across an organization's entire IT infrastructure and provides continuous security management for exposed attack surfaces.
 
 ## Installation
 Step-by-step instructions on how to install and set up the project.
