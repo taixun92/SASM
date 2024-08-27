@@ -1,0 +1,42 @@
+{
+    "203.236.113.204": {
+        "tcp": {
+            "2000": {
+                "banner": "b''",
+                "service": null
+            },
+            "5060": {
+                "banner": "b''",
+                "service": null
+            },
+            "7547": {
+                "banner": "b''",
+                "service": null
+            },
+            "8008": {
+                "banner": "b'HTTP/1.1 302 Found\\r\\nLocation: https://203.236.113.204:8015/\\r\\nConnection: close\\r\\nX-Frame-Options: SAMEORIGIN\\r\\nX-XSS-Protection: 1; mode=block\\r\\nX-Content-Type-Options: nosniff\\r\\nContent-Security-Policy: frame-ancestors\\r\\n'",
+                "service": {
+                    "name": "http"
+                }
+            },
+            "8015": {
+                "banner": "b''",
+                "service": null
+            },
+            "8020": {
+                "banner": "b'HTTP/1.1 200 OK\\r\\nContent-Length: 2515\\r\\nConnection: close\\r\\nCache-Control: no-cache\\r\\nContent-Type: text/html; charset=utf-8\\r\\nX-Frame-Options: SAMEORIGIN\\r\\nX-XSS-Protection: 1; mode=block\\r\\nX-Content-Type-Options: nosniff\\r\\nContent-Security-Policy: frame-ancestors\\r\\n<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">\\n<html>\\n<head>\\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\\n<meta name=\"referrer\" content=\"no-referrer\">\\n    <title>Web Filter Block Override</title>\\n    <style type=\"text/css\">\\n        html, body { margin: 0; padding: 0; font-family: Verdana, Arial, sans-serif; font-size: 10pt; }\\n        h1, h2 { height: 82px; text-indent: -999em; margin: 0; padding: 0; margin: 0; }\\n        div { margin: 0; padding: 0; }\\n        div.header { background: url(http://203.236.113.204:8008/XX/YY/ZZ/CI/MGPGHGPGPFGHCDPFGGOGFGEH) 0 0 repeat-x; height: 82px; }\\n        div.header h1 { background: url(http://203.236.113.204:8008/XX/YY/ZZ/CI/MGPGHGPGPFGHCDPFGGHGFHBGCHEGPFHHGG) 0 0 no-repeat; }\\n        div.header h2 { background: url(http://203.236.113.204:8008/XX/YY/ZZ/CI/MGPGHGPGPFGHCDPFGGOGFGEH) 0 -82px no-repeat; width: 160px; float: right; }\\n        div.sidebar { width: 195px; height: 200px; float: left; }\\n        div.main { padding: 5px; margin-left: 195px; }\\n        div.buttons { margin-top: 30px; text-align: right; }\\n        h3 { margin: 36px 0; font-size: 16pt; }\\n        .blocked      h3 { color: #c00; }\\n        .authenticate h3 { color: #36c; }\\n        h2.fgd_icon { background: url(http://203.236.113.204:8008/XX/YY/ZZ/CI/MGPGHGPGPFGHCDPFGGOGFGEH) 0 -166px repeat-x; width: 90px; height: 92px; margin: 48px auto; }\\n        .blocked      h2.fgd_icon { background-position: 0 -166px; }\\n        .authenticate h2.fgd_icon { background-position: -89px -166px; }\\n        form { width: 300px; margin: 30px 0; }\\n        label { display: block; width: 300px; margin: 5px 0; line-height: 25px; }\\n        label input { width: 200px; border: 1px solid #7f9db9; height: 20px; float: right; }\\n    </style>\\n</head>\\n<body class=\"authenticate\">\\n    <div class=\"header\">\\n        <h2>Powered By Fortinet</h2>\\n        <h1>FortiGuard Web Filtering</h1>\\n    </div>\\n    <div class=\"sidebar\">\\n        <h2 class=\"fgd_icon\">authenticate</h2>\\n    </div>\\n    <div class=\"main\">\\n<h3>Web Filter Block Override</h3><div class=\"notice\">If you have been granted override creation privileges by your administrator, you can enter your username and password here to gain immediate access to the blocked web-page.  If you do not have these privileges, please contact your administrator to gain access to the web-page.</div> <div><font color=\"#FF0000\">\\xed\\x8f\\xac\\xed\\x8b\\xb0\\xea\\xb0\\x80\\xeb\\x93\\x9c \\xec\\x9b\\xb9\\xed\\x95\\x84\\xed\\x84\\xb0\\xeb\\xa7\\x81 \\xec\\x98\\xa4\\xeb\\xb2\\x84\\xeb\\x9d\\xbc\\xec\\x9d\\xb4\\xeb\\x93\\x9c \\xec\\x9a\\x94\\xec\\xb2\\xad\\xec\\x9d\\xb4 \\xec\\x9e\\x98\\xeb\\xaa\\xbb\\xeb\\x90\\x98\\xec\\x97\\x88\\xec\\x8a\\xb5\\xeb\\x8b\\x88\\xeb\\x8b\\xa4.</font></div>    </div>\\n</body>\\n</html>\\r\\n'",
+                "service": {
+                    "name": "http"
+                }
+            }
+        }
+    },
+    "10.10.50.101": {
+        "udp": {
+            "52487": {
+                "banner": "b''",
+                "service": null
+            }
+        }
+    }
+}

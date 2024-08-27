@@ -3,8 +3,8 @@
 
   <head> 
 
-    {% if title %} <title>{{ textData.NONAMED }} - {{ title }}</title>
-    {% else     %} <title>{{ textData.NONAMED               }}</title> {% endif %}
+    {% if title %} <title>{{ textData.SASM }} - {{ title }}</title>
+    {% else     %} <title>{{ textData.SASM               }}</title> {% endif %}
 
     <meta charset="utf-8"                                                                      />
     <meta name="viewport"                      content="width=device-width, initial-scale=1.0" />
@@ -16,15 +16,14 @@
 
   </head>
   
-  {% if   title == 'Login' %} <body class="hold-transition login-page"  >
-  {% elif title == 'Home'  %} <body class="hold-transition sidebar-mini">
-  {% else                  %} <body class="hold-transition"             > {% endif %}
-
+  {% if   title == 'Login' %} <body class="hold-transition login-page"                         >
+  {% elif title == 'Home'  %} <body class="hold-transition sidebar-mini layout-fixed dark-mode">
+  {% else                  %} <body class="hold-transition"                                    > {% endif %}
+    
     <link rel="stylesheet" href="{{ url_for( 'static', filename='plugins/jquery-ui/jquery-ui.min.css'      ) }}">
     <link rel="stylesheet" href="{{ url_for( 'static', filename='plugins/bootstrap/css/bootstrap.min.css'  ) }}">
     <link rel="stylesheet" href="{{ url_for( 'static', filename='plugins/fontawesome-free/css/all.min.css' ) }}">
     <link rel="stylesheet" href="{{ url_for( 'static', filename='plugins/toastr/toastr.min.css'            ) }}">
-    <link rel="stylesheet" href="{{ url_for( 'static', filename='css/adminlte.min.css'                     ) }}">
 
     <style> {% include "base/style.css" %} </style>
 
@@ -32,6 +31,10 @@
       <link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='plugins/jquery-contextmenu/jquery.contextMenu.min.css' ) }}">
       <link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='plugins/bootstrap-table/bootstrap-table.min.css'       ) }}">
       <link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='plugins/flatpickr/flatpickr.min.css'                   ) }}">
+      <link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='plugins/jsgrid/jsgrid.min.css'                         ) }}">
+      <link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='plugins/jsgrid/jsgrid-theme.min.css'                   ) }}">
+      <link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='plugins/jsTree/themes/default/style.min.css'           ) }}">
+      <link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='css/adminlte.min.css'                                  ) }}">
       <link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='css/my-table.css'                                      ) }}"> {% endif %}
 
     {% block STYLES %}{# LINE #}{% endblock %}
@@ -39,9 +42,9 @@
     {% if title in ( "Install", "Setting" ) %}
       {% include "base/navbar/layout.html" %} {% endif %}
 
-    {% include "base/modals/layout.html" %}
-
     {% block CONTENT %}{# LINE #}{% endblock %}
+    
+    {% include "base/modals/layout.html" %}
 
     <script src="{{ url_for( 'static', filename='plugins/jquery/jquery.min.js'                 ) }}"></script>
     <script src="{{ url_for( 'static', filename='plugins/jquery-ui/jquery-ui.min.js'           ) }}"></script>
@@ -84,10 +87,14 @@
 
     {% if current_user.is_authenticated 
       %} <script type="text/javascript" src="{{ url_for( 'static', filename='plugins/jquery-contextmenu/jquery.contextMenu.min.js' ) }}"></script>
+         <script type="text/javascript" src="{{ url_for( 'static', filename='plugins/jquery-knob/jquery.knob.min.js'               ) }}"></script>
          <script type="text/javascript" src="{{ url_for( 'static', filename='plugins/popper/popper.min.js'                         ) }}"></script>
          <script type="text/javascript" src="{{ url_for( 'static', filename='plugins/bootstrap-table/bootstrap-table.min.js'       ) }}"></script>
          <script type="text/javascript" src="{{ url_for( 'static', filename='plugins/flatpickr/flatpickr.js'                       ) }}"></script>
          <script type="text/javascript" src="{{ url_for( 'static', filename='plugins/flatpickr/flatpickr.ko.js'                    ) }}"></script>
+         <script type="text/javascript" src="{{ url_for( 'static', filename='plugins/jsTree/jstree.min.js'                         ) }}"></script>
+         <script type="text/javascript" src="{{ url_for( 'static', filename='plugins/jsgrid/jsgrid.min.js'                         ) }}"></script>
+         <script type="text/javascript" src="{{ url_for( 'static', filename='plugins/chart.js/Chart.min.js'                        ) }}"></script>
          <script type="text/javascript" src="{{ url_for( 'static', filename='js/my-table.js'                                       ) }}"></script>
          <script type="text/javascript">
               const refreshSession = () => util.debounce( 'refreshSession', 

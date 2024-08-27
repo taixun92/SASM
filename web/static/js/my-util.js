@@ -482,9 +482,9 @@ const util = {
     ; }
   
   , SnakeToCamel                  : function ( strings ){ // 'abc_def_ghi' --> 'AbcDefGhi'
-        let splited_strings = strings.split('_');
+        let splited_strings = strings.split( '_' )
 
-      ; for ( let i=0; i<splited_strings.length ; i++ ){
+      ; for ( let i=0; i<splited_strings.length; i++ ){
           splited_strings[ i ] = splited_strings[ i ][ 0 ].toUpperCase() 
                                + splited_strings[ i ].slice( 1 )
         ; }

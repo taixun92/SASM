@@ -862,7 +862,7 @@
               <input id="${ id }-search-input" type="text" class="form-control search-input" tablename="${ table_name }">
 
               <button type="button" class="btn my-table-btn btn-secondary search-button help-tooltip p-0" title="${ this.language_data[ locale ].SEARCH }">
-                <img src="static/image/search.svg" width="20" height="20">
+                <img src="static/img/search.svg" width="20" height="20">
               </button>
 
             </div>
@@ -923,17 +923,17 @@
               <div class="d-flex align-items-center">
 
                 <button class="btn my-table-btn d-flex justify-content-center align-items-center goto-first">
-                  <img src="static/image/p_f.png">
+                  <i class="fas fa-angle-double-left"></i>
                 </button>
 
                 <button class="btn my-table-btn d-flex justify-content-center align-items-center goto-previous">
-                  <img src="static/image/p_p.png">
+                  <i class="fas fa-angle-left"></i>
                 </button>
 
                 <input type="text" class="form-control my-table-form-control current-page-input" value="0">
 
                 <button class="btn my-table-btn d-flex justify-content-center align-items-center goto-page">
-                  <img src="static/image/p_search.svg">
+                  <i class="fas fa-search"></i>
                 </button>
 
                 &nbsp;/&nbsp;
@@ -941,11 +941,11 @@
                 <div class="page-count">0</div>
 
                 <button class="btn my-table-btn d-flex justify-content-center align-items-center goto-next">
-                  <img src="static/image/p_n.png">
+                  <i class="fas fa-angle-right"></i>
                 </button>
 
                 <button class="btn my-table-btn d-flex justify-content-center align-items-center goto-last">
-                  <img src="static/image/p_l.png">
+                  <i class="fas fa-angle-double-right"></i>
                 </button>
 
                 <select class="form-control my-table-form-control page-size-select">

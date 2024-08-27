@@ -34,6 +34,7 @@ from engine.app.api                      import create_api, read_api, update_api
 from engine.app.route                    import install_bp, root_bp, home_bp, setting_bp
 from engine.app.util                     import Response, ServerSideEvent
 from engine.app.view                     import error_view
+from engine.app.dashboard                import init_dashboard
 from engine.app.api.controller.exception import CommandNotFound, InvalidRequestForm, CommandExecutionFailed
 from engine.orm.model.public             import WebUser
 
@@ -123,7 +124,7 @@ def create_app():
     ############################################################################################################################################################################
     # 일시 잠금 상태로 로그인 불가능한 사용자 목록
     ############################################################################################################################################################################
-    g.temporaryLockedUsers = {}         # TODO #: expiringdict로 교체
+    g.temporaryLockedUsers = {}
 
     ############################################################################################################################################################################
     # 백엔드 -> 프론트엔드 메세지 핸들러
@@ -133,10 +134,10 @@ def create_app():
     ############################################################################################################################################################################
     # Blueprint
     ############################################################################################################################################################################
-    app.register_blueprint( root_bp    )
-    app.register_blueprint( home_bp    )
-    app.register_blueprint( setting_bp )
-    app.register_blueprint( install_bp )
+    app.register_blueprint( root_bp      )
+    app.register_blueprint( home_bp      )
+    app.register_blueprint( setting_bp   )
+    app.register_blueprint( install_bp   )
 
     ############################################################################################################################################################################
     # API
@@ -231,7 +232,7 @@ def create_app():
         #   2. [ server side event stream ] 요청한 경우
         #   3. [ 존재하지 않는 resource    ] 요청한 경우
         ##############################################################################################
-        elif request.endpoint in [ 'stream', 'js', 'static', None ]:
+        if request.endpoint in [ 'stream', 'js', 'static', None ]:
             pass
 
         ##############################################################################################
@@ -240,12 +241,12 @@ def create_app():
         elif current_user.is_anonymous:
             
             ###########################################################
-            # api 문서 페이지 접근 차단 
-            # 루트 페이지로 이동
+            # dashboard, swagger 페이지 접근 차단
             ###########################################################
-            if request.path.startswith( '/api' ):
+            if request.path.startswith( '/dashboard' )\
+            or request.path.startswith( '/api'       ):
                 return redirect( '/' )
-
+    
         ##############################################################################################
         # 인가된 사용자의 요청인 경우
         ##############################################################################################
@@ -382,4 +383,4 @@ def create_app():
     def shutdown_session( exception=None ):
         if 'engineDB' in dir( g ): g.engineDB.session.remove()
 
-    return app
+    return init_dashboard( app )

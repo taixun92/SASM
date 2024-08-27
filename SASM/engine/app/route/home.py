@@ -6,7 +6,6 @@
 # ====================== Comments ======================
 #
 
-from os.path     import join as path_join
 from flask       import Blueprint
 from flask_login import current_user, login_required
 

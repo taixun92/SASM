@@ -7,7 +7,7 @@
 #  
 
 from sqlalchemy                     import Column
-from sqlalchemy                     import ForeignKey, DateTime, SmallInteger, String, Text
+from sqlalchemy                     import ForeignKey, DateTime, SmallInteger, String, Text, Integer
 from sqlalchemy.orm                 import relationship, backref
 from sqlalchemy.ext.declarative     import declarative_base
 from sqlalchemy.dialects.postgresql import JSONB
@@ -55,6 +55,30 @@ class AuditLogCategory( Base ):
 
     code  = Column( String( 4  ), primary_key = True  )
     alias = Column( String( 64 ), nullable    = False )
+
+    def __repr__( self ):
+        return str( { x.name: getattr( self, x.name ) for x in self.__table__.columns } )
+    
+class Asset( Base ):
+    __tablename__ = 'asset'
+
+    aid      = Column( Integer                                      , primary_key = True  )
+    ip       = Column( String( 16 )                                                       )
+    hostname = Column( String( 64 )                                                       )
+    gid      = Column( ForeignKey( 'group.gid', ondelete='CASCADE' ), nullable    = False )
+
+    group    = relationship( 'Group', primaryjoin='Asset.gid == Group.gid', backref=backref( 'assets', cascade='all,delete' ) )
+
+    def __repr__( self ):
+        return str( { x.name: getattr( self, x.name ) for x in self.__table__.columns } )
+    
+class Group( Base ):
+    __tablename__ = 'group'
+
+    gid       = Column( SmallInteger, primary_key = True  )
+    groupname = Column( String( 64 ), nullable    = False )
+    seq       = Column( SmallInteger, nullable    = False )
+    owner     = Column( String( 64 )                      )
 
     def __repr__( self ):
         return str( { x.name: getattr( self, x.name ) for x in self.__table__.columns } )

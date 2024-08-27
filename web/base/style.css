@@ -78,7 +78,7 @@ li {
   cursor          : pointer;
   text-decoration :    none;
 }
-.header .header-right .nav-login-info>.btn {
+#logout-button {
   width            :      58px;
   height           :      23px;
   padding          :       0px;
@@ -87,7 +87,7 @@ li {
   font-size        :    0.7rem;
   background-color : #6e85ac;
 }
-.header .header-right .nav-login-info>.btn:hover {
+#logout-button:hover {
   background-color : #4f6d9c;
 }
 

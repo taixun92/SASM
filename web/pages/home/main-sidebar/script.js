@@ -1,0 +1,1 @@
+{% include "pages/home/main-sidebar/nav-pills/script.js" %}

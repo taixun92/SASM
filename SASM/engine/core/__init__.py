@@ -379,40 +379,34 @@ def main( args ):
                 and ( not g.options[ 'reload' ] ):
                     EngineSplashImage.destroy()
 
+            ###################################################################################################################################################
+            # 웹 서버 기동
+            ###################################################################################################################################################
             app = create_app()
-            ##########################################
-            # 개발자 모드 == True
-            ##########################################
+
             if g.options[ 'dev' ]:
                 app.run(
-                      host        = g.options[ 'web_host'    ]
-                    , port        = g.options[ 'web_port'    ]
-                    , threaded    = True
-                    , ssl_context = g.options[ 'ssl_context' ]
+                      host         = g.options[ 'web_host'    ]
+                    , port         = g.options[ 'web_port'    ]
+                    , threaded     = True
+                    , ssl_context  = g.options[ 'ssl_context' ]
+                    , use_reloader = False
                 )
                 
-            ##########################################
-            # 개발자 모드 == False
-            ##########################################
             else:
-                kwargs = {
-                      'host'        : g.options[ 'web_host'    ]
-                    , 'port'        : g.options[ 'web_port'    ]
-                    , 'threaded'    : True
-                    , 'ssl_context' : g.options[ 'ssl_context' ]
-                }
-
-                ##########################################
-                # Flask Web Application thread
-                ##########################################
-                app_p        = Thread( target=app.run, kwargs=kwargs )
-                app_p.daemon = True
+                app_p = Thread( target=app.run, kwargs={
+                      'host'         : g.options[ 'web_host'    ]
+                    , 'port'         : g.options[ 'web_port'    ]
+                    , 'threaded'     : True
+                    , 'ssl_context'  : g.options[ 'ssl_context' ]
+                } )
+                app_p.daemon = False
                 app_p.start()
                 app_p.join()
             
-            ##########################################
+            ###################################################################################################################################################
             # 웹 서버가 종료된 경우
-            ##########################################
+            ###################################################################################################################################################
             g.logger.info( 'Clean up all process.' )
             g.procManager.cleanUp()                   # 모든 프로세스를 종료한다. 
 

@@ -260,31 +260,3 @@ def get_hostname_from_nbns_raw(raw):
             start += 18
 
     return hostname
-
-if __name__ == '__main__':
-    raw = b'\x80\xf0\x84\x00\x00\x00\x00\x01\x00\x00\x00\x00 CKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\x00\x00!\x00\x01\x00\x00\x00\x00\x00w\x04\xbf\xac\xb1\xb8\xbc\xd2-QKR0220  \x04\x00WORKGROUP      \x00\x84\x00\xbf\xac\xb1\xb8\xbc\xd2-QKR0220 \x00\x04\x00WORKGROUP      \x1e\x84\x00p\x85\xc2@!\r\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
-    print(get_hostname_from_nbns_raw(raw))
-    
-    # a = parseRangedAddress('192.168.56.101-105,10.10.50.101,192.168.56.4/30')
-    # print(a)
-
-    # b1 = parseRangedNumber('5,7,20-23,3-6,80,81,83,234631463146', maximum=65535)
-    # print(b1)
-
-    # b2 = parseRangedNumber('5,7,20-23,3-6,80,81,83,234631432462134663146,655461-655465', maximum=None)
-    # print(b2)
-
-    # c = compress_ip_list_to_str(['10.10.50.101', '192.168.56.5', '192.168.56.6', '192.168.56.101', '192.168.56.102', '192.168.56.103', '192.168.56.104', '192.168.56.105'])
-    # print(c)
-
-    # d = compress_number_list_to_str([3, 4, 5, 6, 7, 20, 21, 22, 23, 80, 81, 83, 65323333])
-    # print(d)
-
-    # e = compress_number_list_to_str(['20', '21', '22', '23', '3', '4', '5', '6', '65323333', '7', '80', '81', '83'])
-    # print(e)
-
-    # f = compress_ip_list_to_str([])
-    # print(f'[{f}]')
-
-    # g = get_ascii_from_raw(b'')
-    # print('end')

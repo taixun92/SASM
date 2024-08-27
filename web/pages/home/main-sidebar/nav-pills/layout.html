@@ -1,0 +1,88 @@
+<nav class="mt-2">
+    <ul id="main-sidebar-pills" class="nav nav-pills nav-sidebar flex-column nav-lagacy nav-child-indent" data-widget="treeview" role="menu"
+        data-accordion="false">
+
+        {# 1 #}
+        <li id="main-sidebar-pills-dashboard" class="nav-item">
+            <a href="javascript:;" class="nav-link active">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                    {{ textData.NAV_DASHBOARD }}
+                </p>
+            </a>
+        </li>
+        {# 1 end #}
+
+        {# 2 #}
+        <li id="main-sidebar-pills-assets" class="nav-item menu-close">
+
+            {# root #}
+            <a href="javascript:;" class="nav-link">
+                <i class="nav-icon fas fa-sitemap"></i>
+                <p>
+                    {{ textData.NAV_ASSETS }}
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            {# root end #}
+
+            {# childrens #}
+            <ul class="nav nav-treeview">
+
+                {# 2-1 #}
+                <li id="main-sidebar-pills-assets-manage" class="nav-item">
+                    <a href="javascript:;" class="nav-link">
+                        <i class="fas fa-laptop-house nav-icon"></i>
+                        <p>{{ textData.ASSET }} {{ textData.MANAGE }}</p>
+                    </a>
+                </li>
+                {# 2-1 end #}
+
+            </ul>
+            {# childrens end #}
+
+        </li>
+        {# 2 end #}
+
+        {# 3 #}
+        <li id="main-sidebar-pills-tools" class="nav-item menu-close">
+
+            {# root #}
+            <a href="javascript:;" class="nav-link">
+                <i class="nav-icon fas fa-wrench"></i>
+                <p>
+                    {{ textData.NAV_TOOLS }}
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            {# root end #}
+
+            {# childrens #}
+            <ul class="nav nav-treeview">
+
+                {# 3-1 #}
+                <li id="main-sidebar-pills-tools-1" class="nav-item">
+                    <a href="javascript:;" class="nav-link">
+                        <i class="fas fa-bug nav-icon"></i>
+                        <p>{{ textData.NAV_TOOLS }} #1</p>
+                    </a>
+                </li>
+                {# 3-1 end #}
+
+                {# 3-2 #}
+                <li id="main-sidebar-pills-tools-2" class="nav-item">
+                    <a href="javascript:;" class="nav-link">
+                        <i class="fas fa-microchip nav-icon"></i>
+                        <p>{{ textData.NAV_TOOLS }} #2</p>
+                    </a>
+                </li>
+                {# 3-2 end #}
+
+            </ul>
+            {# childrens end #}
+
+        </li>
+        {# 3 end #}
+
+    </ul>
+</nav>

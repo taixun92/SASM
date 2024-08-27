@@ -1,9 +1,9 @@
 {% include "pages/login/modals/layout.html" %}
 
-<div class="login-box">
-    <h3>{{ textData.LOGIN }}</h3>
+<div class="login-box d-none">
+    <h3 style="font-weight: bold;">{{ textData.LOGIN }}</h3>
 
-    <p class="login-box-msg text-danger"></p>
+    <h5 class="login-box-msg text-danger" style="font-weight: bold;"></h5>
 
     <label for="login-input-id">{{ textData.ID }}</label>
     <input id="login-input-id" type="text" placeholder="{{ textData.USERNAME }}">

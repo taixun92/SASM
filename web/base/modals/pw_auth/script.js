@@ -93,12 +93,12 @@ function (
                 )
             ]
         }
-                , "modal_close" : {
-                      selector : this_modal
-                    , method   : 'one'
-                    , args     : [ 'hide.bs.modal', () => $( `${ this_modal },${ this_modal }-submit-button` ).off() ]
-                  }
-              } )
+      , "modal_close" : {
+            selector : this_modal
+          , method   : 'one'
+          , args     : [ 'hide.bs.modal', () => $( `${ this_modal },${ this_modal }-submit-button` ).off() ]
+        }
+    } )
 
   ; $( `${ this_modal }-input-password` ).val  ( ''     )
   ; $( this_modal                       ).modal( 'show' )

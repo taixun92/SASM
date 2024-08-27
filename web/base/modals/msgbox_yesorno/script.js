@@ -1,4 +1,10 @@
-function ( msg, msg_detail, callback, btn_text_origin='{{ textData.YES }}', this_modal='#msgbox-yesorno-modal' ){
+function (
+    msg
+  , msg_detail
+  , callback
+  , btn_text_origin='{{ textData.YES }}'
+  , this_modal='#msgbox-yesorno-modal' 
+){
     util.addEventListeners( {
         "keyup" : {
             selector : this_modal
