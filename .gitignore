@@ -6,8 +6,8 @@ config/config.ini
 log/*
 bin/starter
 bin/PORT_SCAN.json
-bin/network_scan/PORT_SCAN.json
-bin/network_scan/PORT_SCAN2.json
+bin/network_scanner/PORT_SCAN.json
+bin/network_scanner/PORT_SCAN2.json
 bin/whois/requirements.txt
 web/static/plugins/bootstrap-colorpicker/
 web/static/plugins/bootstrap-slider/
